@@ -6,7 +6,7 @@ public class CalculatorService {
         return a + b;
     }
 
-    public int substraction(int a, int b){
-        return a - b;
+    public int substraction(int firstNumber, int secondNumber){
+        return firstNumber - secondNumber;
     }
 }
