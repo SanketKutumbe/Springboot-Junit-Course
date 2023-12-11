@@ -4,6 +4,7 @@ import edu.poc.junit5.junit.service.CalculatorService;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Testing Calculator service methods")
 public class CalculatorServiceTests {
@@ -87,5 +88,23 @@ public class CalculatorServiceTests {
 
         // Assert
         assertEquals(expectedResult, actualResult, ()->errorMessage);
+    }
+
+    @DisplayName("Test 2/0")
+    @Test
+    public void testDivision_WhenDividendIsDividedByDivisor_ShouldThrowArithmaticException(){
+
+        // Arrange
+        int dividend = 2;
+        int divisor = 0;
+        String expectedResult = "/ by zero";
+        // Act and Assert-1
+        ArithmeticException actualResult = assertThrows(ArithmeticException.class, () ->{
+            calculatorService.division(dividend, divisor);
+        }, () -> "Thrown Arithmatic exception");
+
+        // Assert
+        assertEquals(expectedResult, actualResult.getMessage(), ()->"Exception not thrown");
+
     }
 }

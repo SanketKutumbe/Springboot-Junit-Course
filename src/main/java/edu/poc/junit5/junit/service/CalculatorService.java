@@ -9,4 +9,8 @@ public class CalculatorService {
     public int substraction(int firstNumber, int secondNumber){
         return firstNumber - secondNumber;
     }
+
+    public int division(int dividend, int divisor){
+        return dividend/divisor;
+    }
 }
