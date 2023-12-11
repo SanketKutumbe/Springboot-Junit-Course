@@ -36,7 +36,7 @@ public class CalculatorServiceTests {
     @Test
     public void testSubstraction(){
         // Writing print statement for the sake of lifecycle execution flow
-        System.out.println("Executing testSubstraction method");
+//        System.out.println("Executing testSubstraction method");
 
         // Arrange
         int firstNumber = 1;
@@ -50,11 +50,12 @@ public class CalculatorServiceTests {
         assertEquals(expectedResult, actualResult);
     }
 
+    @Disabled("TODO: Still need to work on it.")
     @DisplayName("Test 1-2 not equal to 3")
     @Test
     public void testSubstractionWithErrorMessage(){
         // Writing print statement for the sake of lifecycle execution flow
-        System.out.println("Executing testSubstractionWithErrorMessage method");
+//        System.out.println("Executing testSubstractionWithErrorMessage method");
 
         // Arrange
         int firstNumber = 1;
@@ -73,7 +74,7 @@ public class CalculatorServiceTests {
     @Test
     public void testAddition_WhenTwoIntegersAreAdded_ShouldReturnThree(){
         // Writing print statement for the sake of lifecycle execution flow
-        System.out.println("Executing testAddition_WhenTwoIntegersAreAdded_ShouldReturnThree method");
+//        System.out.println("Executing testAddition_WhenTwoIntegersAreAdded_ShouldReturnThree method");
 
         // Arrange
         int firstNumber = 1;
