@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("Testing Calculator service methods")
 public class CalculatorServiceTests {
 
+    CalculatorService calculatorService;
+
     @BeforeAll
     static void setup(){
         System.out.println("Executing @BeforeAll setup method");
@@ -18,11 +20,25 @@ public class CalculatorServiceTests {
         System.out.println("Executing @AfterAll cleanup method");
     }
 
+    @BeforeEach
+    void executeBeforeEachTest(){
+        System.out.println("Executing @BeforeEach setup method");
+        calculatorService = new CalculatorService();
+    }
+
+    @AfterEach
+    void executeAfterEachTest(){
+        System.out.println("Executing @AfterEach setup method");
+    }
+
+
     @DisplayName("Test 1-2=-1")
     @Test
     public void testSubstraction(){
+        // Writing print statement for the sake of lifecycle execution flow
+        System.out.println("Executing testSubstraction method");
+
         // Arrange
-        CalculatorService calculatorService = new CalculatorService();
         int firstNumber = 1;
         int secondNumber = 2;
         int expectedResult = -1;
@@ -37,8 +53,10 @@ public class CalculatorServiceTests {
     @DisplayName("Test 1-2 not equal to 3")
     @Test
     public void testSubstractionWithErrorMessage(){
+        // Writing print statement for the sake of lifecycle execution flow
+        System.out.println("Executing testSubstractionWithErrorMessage method");
+
         // Arrange
-        CalculatorService calculatorService = new CalculatorService();
         int firstNumber = 1;
         int secondNumber = 2;
         int expectedResult = 3;
@@ -54,8 +72,10 @@ public class CalculatorServiceTests {
     @DisplayName("Test 1+2=3")
     @Test
     public void testAddition_WhenTwoIntegersAreAdded_ShouldReturnThree(){
+        // Writing print statement for the sake of lifecycle execution flow
+        System.out.println("Executing testAddition_WhenTwoIntegersAreAdded_ShouldReturnThree method");
+
         // Arrange
-        CalculatorService calculatorService = new CalculatorService();
         int firstNumber = 1;
         int secondNumber = 2;
         int expectedResult = 3;
