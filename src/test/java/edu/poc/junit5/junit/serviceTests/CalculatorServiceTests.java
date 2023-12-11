@@ -1,13 +1,22 @@
 package edu.poc.junit5.junit.serviceTests;
 
 import edu.poc.junit5.junit.service.CalculatorService;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Testing Calculator service methods")
 public class CalculatorServiceTests {
+
+    @BeforeAll
+    static void setup(){
+        System.out.println("Executing @BeforeAll setup method");
+    }
+
+    @AfterAll
+    static void cleanup(){
+        System.out.println("Executing @AfterAll cleanup method");
+    }
 
     @DisplayName("Test 1-2=-1")
     @Test
