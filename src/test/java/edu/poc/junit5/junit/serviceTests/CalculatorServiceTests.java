@@ -164,4 +164,13 @@ public class CalculatorServiceTests {
         // Assert
         assertEquals(expectedResult, actualResult);
     }
+
+    @DisplayName("Repeated Test as display name")
+    @RepeatedTest(value=3, name="{displayName}, Repetition {currentRepetition} of {totalRepetitions}")
+    public void repeatedTestPOC(RepetitionInfo repetitionInfo, TestInfo testInfo){
+
+        System.out.println("Running "+ testInfo.getTestMethod().get().getName());
+        System.out.println("Repetition #"+ repetitionInfo.getCurrentRepetition() +
+                " of "+ repetitionInfo.getTotalRepetitions() );
+    }
 }
