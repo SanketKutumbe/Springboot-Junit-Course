@@ -2,6 +2,11 @@ package edu.poc.junit5.junit.serviceTests;
 
 import edu.poc.junit5.junit.service.CalculatorService;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -99,12 +104,43 @@ public class CalculatorServiceTests {
         int divisor = 0;
         String expectedResult = "/ by zero";
         // Act and Assert-1
-        ArithmeticException actualResult = assertThrows(ArithmeticException.class, () ->{
-            calculatorService.division(dividend, divisor);
-        }, () -> "Thrown Arithmatic exception");
+        ArithmeticException actualResult = assertThrows(ArithmeticException.class, () ->
+            calculatorService.division(dividend, divisor)
+        , () -> "Thrown Arithmatic exception");
 
         // Assert
         assertEquals(expectedResult, actualResult.getMessage(), ()->"Exception not thrown");
 
+    }
+
+    @DisplayName("Parameterised Test 1+2=3")
+    @ParameterizedTest
+    //@MethodSource("inputMethod")
+    @MethodSource
+    public void testAdditionWithParameters_WhenTwoIntegersAreAdded_ShouldReturnThree(int firstNumber, int secondNumber, int expectedResult){
+        // Arrange
+        String errorMessage = "Adding "+secondNumber+" to "+firstNumber+" is not generating expected result";
+
+        // Act
+        int actualResult = calculatorService.addition(firstNumber, secondNumber);
+
+        // Assert
+        assertEquals(expectedResult, actualResult, ()->errorMessage);
+    }
+
+    private static Stream<Arguments> inputMethod(){
+        Stream<Arguments> result = Stream.of(
+                Arguments.of(1,2,3),
+                Arguments.of(-1,10,9)
+        );
+        return result;
+    }
+
+    private static Stream<Arguments> testAdditionWithParameters_WhenTwoIntegersAreAdded_ShouldReturnThree(){
+        Stream<Arguments> result = Stream.of(
+                Arguments.of(1,2,13),
+                Arguments.of(-1,10,9)
+        );
+        return result;
     }
 }
