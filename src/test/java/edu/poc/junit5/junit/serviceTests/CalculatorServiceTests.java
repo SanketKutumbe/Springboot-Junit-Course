@@ -4,6 +4,8 @@ import edu.poc.junit5.junit.service.CalculatorService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -113,7 +115,7 @@ public class CalculatorServiceTests {
 
     }
 
-    @DisplayName("Parameterised Test 1+2=3")
+    @DisplayName("Parameterised Test for addition")
     @ParameterizedTest
     //@MethodSource("inputMethod")
     @MethodSource
@@ -142,5 +144,24 @@ public class CalculatorServiceTests {
                 Arguments.of(-1,10,9)
         );
         return result;
+    }
+
+    @DisplayName("Parameterized Test for substraction")
+    @ParameterizedTest
+//    @CsvSource({
+//            "1,2,-1",
+//            "5,4,0",
+//            "10,1,9"
+//    })
+    @CsvFileSource(resources = "/input.csv")
+    public void testSubstraction(int firstNumber, int secondNumber, int expectedResult){
+        // Writing print statement for the sake of lifecycle execution flow
+//        System.out.println("Executing testSubstraction method");
+
+        // Act
+        int actualResult = calculatorService.substraction(firstNumber, secondNumber);
+
+        // Assert
+        assertEquals(expectedResult, actualResult);
     }
 }
