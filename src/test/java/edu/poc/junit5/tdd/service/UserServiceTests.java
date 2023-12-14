@@ -1,5 +1,6 @@
 package edu.poc.junit5.tdd.service;
 
+import edu.poc.junit5.tdd.model.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,8 @@ public class UserServiceTests {
         int age = 20;
 
         // Act
-        userService.createUser(username, phone, age);
+        User resultUser = userService.createUser(username, phone, age);
+
         // Assert
     }
 }
