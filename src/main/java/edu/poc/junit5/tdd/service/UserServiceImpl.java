@@ -1,8 +1,11 @@
 package edu.poc.junit5.tdd.service;
 
+import edu.poc.junit5.tdd.model.User;
+
 public class UserServiceImpl implements UserService {
     @Override
-    public void createUser(String username, String phone, int age) {
+    public User createUser(String username, String phone, int age) {
 
+        return null;
     }
 }
