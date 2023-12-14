@@ -6,6 +6,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(String username, String phone, int age) {
 
-        return null;
+        return new User();
     }
 }
