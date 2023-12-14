@@ -72,7 +72,6 @@ public class UserServiceTests {
     @Test
     @Order(3)
     void testGetUserDetailsMap_whenUserIDisProvided_returnMapNotNull(){
-        // Arrange
 
         // Act
         Map resultMap = userService.getUserDetails(userId);
@@ -85,15 +84,12 @@ public class UserServiceTests {
     @Test
     @Order(4)
     void testDeleteUserDetails_whenUserIdisProvided(){
-        // Arrange
 
         // Act
         userService.deleteUser(userId);
 
         // Assert
         assertNull(userService.getUserDetails(userId));
-
-
     }
 
 }
