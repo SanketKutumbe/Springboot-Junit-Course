@@ -4,6 +4,7 @@ import edu.poc.junit5.tdd.model.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class UserServiceTests {
@@ -22,6 +23,7 @@ public class UserServiceTests {
 
         // Assert
         assertNotNull(resultUser);
+        assertEquals(username, resultUser.getUsername());
     }
 
 
