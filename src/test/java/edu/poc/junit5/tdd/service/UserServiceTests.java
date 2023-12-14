@@ -4,6 +4,8 @@ import edu.poc.junit5.tdd.model.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 public class UserServiceTests {
 
     @DisplayName("Test user creation")
@@ -19,5 +21,8 @@ public class UserServiceTests {
         User resultUser = userService.createUser(username, phone, age);
 
         // Assert
+        assertNotNull(resultUser);
     }
+
+
 }
