@@ -10,9 +10,12 @@ public class UserServiceTests {
     public void testCreateUser_whenUserDetailsProvided_thenCreateUser_returnCreatedUserObject(){
         // Arrange
         UserService userService = new UserServiceImpl();
+        String username = "Sanket";
+        String phone = "12345";
+        int age = 20;
 
         // Act
-
+        userService.createUser(username, phone, age);
         // Assert
     }
 }
