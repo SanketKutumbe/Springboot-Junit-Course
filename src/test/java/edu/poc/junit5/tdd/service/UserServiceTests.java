@@ -26,5 +26,21 @@ public class UserServiceTests {
         assertEquals(username, resultUser.getUsername());
     }
 
+    @DisplayName("Verify phone number")
+    @Test
+    public void testCreateUser_whenUserDetailsProvided_thenComparePhone(){
+        // Arrange
+        UserService userService = new UserServiceImpl();
+        String username = "Sanket";
+        String phone = "12345";
+        int age = 20;
+
+        // Act
+        User resultUser = userService.createUser(username, phone, age);
+
+        // Assert
+        assertEquals(phone, resultUser.getPhone());
+    }
+
 
 }
