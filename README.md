@@ -20,5 +20,4 @@ Points to remember:
 
 # TDD Lifecycle:
 
-<img alt="TDD Lifecycle" src="C:\Users\sanket.kutumbe\Pictures\Screenshots\Screenshot 2023-12-14 101418.png" title="TDD Lifecycle"/>
-
+![Screenshot 2023-12-14 101418](https://github.com/SanketKutumbe/Springboot-Junit-Course/assets/30076041/0113e34c-c84e-4aac-a679-dfa45517707a)
