@@ -1,4 +1,4 @@
-package edu.poc.junit5.tdd.service;
+package edu.poc.junit5.tdd;
 
 import edu.poc.junit5.tdd.model.User;
 
