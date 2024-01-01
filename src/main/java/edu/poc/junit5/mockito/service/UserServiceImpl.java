@@ -24,8 +24,9 @@ public class UserServiceImpl implements UserService {
 
         String id = UUID.randomUUID().toString();
         User user = new User(id, username, phone, age);
-        boolean result = userRepository.save(user);
-        userRepository.save(user);
+        boolean result = true;
+//        result = userRepository.save(user);
+        userRepository.status(user);
         if( !result ) throw new UserServiceException("Error executing the service");
         return result;
     }

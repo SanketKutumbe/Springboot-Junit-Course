@@ -1,6 +1,6 @@
 package edu.poc.junit5.mockito;
 
-import edu.poc.junit5.mockito.exception.UserServiceException;
+import edu.poc.junit5.mockito.exception.StatusCheckException;
 import edu.poc.junit5.mockito.repository.UserRepository;
 import edu.poc.junit5.mockito.service.UserServiceImpl;
 import edu.poc.junit5.mockito.model.User;
@@ -12,11 +12,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-//@MockitoSettings(strictness = Strictness.LENIENT)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class MockitoApplicationTests {
 
 	@InjectMocks
@@ -52,18 +54,23 @@ class MockitoApplicationTests {
 		Mockito.verify(userRepository, Mockito.times(1)).save(Mockito.any(User.class));
 	}
 
-	@DisplayName("Create User throws exception")
+	@DisplayName("Create void method stubbing")
 	@Test
-	public void testCreateUser_whenUsernameIsNull_throwUserServiceException(){
+	public void testStatus(){
 		// Arrange
-		username = null;
-		String expectedMessage = "Could not find username";
+		Mockito.when(userRepository.save(Mockito.any(User.class)))
+				.thenReturn(true);
+
+		Mockito.doThrow(StatusCheckException.class)
+				.when(userRepository)
+				.status(Mockito.any(User.class));
 
 		// Act
-		UserServiceException use = assertThrows(UserServiceException.class, ()-> userService.createUser(username, phone, age));
+		assertThrows(StatusCheckException.class, () ->userService.createUserWithMockito( username, phone, age ) );
 
 		// Assert
-		assertEquals( use.getMessage(), expectedMessage);
+		Mockito.verify(userRepository, Mockito.times(1))
+				.status(Mockito.any(User.class));
 	}
 
 

@@ -16,7 +16,13 @@ public class UserRepositoryImpl implements UserRepository {
             map.put(user.getId(), user);
             result = true;
         }
-
         return result;
     }
+
+    @Override
+    public void status(User user) {
+        System.out.println("Checking the status but returning anything");
+    }
+
+
 }
