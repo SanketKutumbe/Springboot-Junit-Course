@@ -2,8 +2,6 @@ package edu.poc.junit5.mockito;
 
 import edu.poc.junit5.mockito.exception.UserServiceException;
 import edu.poc.junit5.mockito.repository.UserRepository;
-import edu.poc.junit5.mockito.repository.UserRepositoryImpl;
-import edu.poc.junit5.mockito.service.UserService;
 import edu.poc.junit5.mockito.service.UserServiceImpl;
 import edu.poc.junit5.mockito.model.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,8 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,6 +45,11 @@ class MockitoApplicationTests {
 
 		// Assert
 		assertTrue(result);
+
+		/* 	Verifying number of executions of "Save()"
+			Use-case: To avoid accidentally saving the object multiple number of times.
+		 */
+		Mockito.verify(userRepository, Mockito.times(1)).save(Mockito.any(User.class));
 	}
 
 	@DisplayName("Create User throws exception")
