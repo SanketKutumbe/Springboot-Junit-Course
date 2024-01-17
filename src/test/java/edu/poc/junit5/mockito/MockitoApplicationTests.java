@@ -36,7 +36,7 @@ class MockitoApplicationTests {
 		age = 20;
 	}
 
-	@DisplayName("Test user creation")
+	@DisplayName("Test user creation with Mockito")
 	@Test
 	public void testCreateUser_whenUserDetailsProvided_thenCreateUser_returnCreatedUserObject(){
 		// Arrange
@@ -54,7 +54,7 @@ class MockitoApplicationTests {
 		Mockito.verify(userRepository, Mockito.times(1)).save(Mockito.any(User.class));
 	}
 
-	@DisplayName("Create void method stubbing")
+	@DisplayName("Create void method stubbing with Mockito")
 	@Test
 	public void testStatus(){
 		// Arrange
@@ -73,5 +73,28 @@ class MockitoApplicationTests {
 				.status(Mockito.any(User.class));
 	}
 
+	@DisplayName("Test user creation method")
+	@Test
+	public void testCreateUser_whenUserDetailsProvided_thenReturnUserObject(){
+		// Arrange
+		User result;
 
+		// Act
+		result = userService.createUser(username, phone, age);
+
+		// Assert
+		assertNotNull(result);
+	}
+
+	@DisplayName("Void method stubbing with Mockito")
+	@Test
+	public void testcreateUserWithMockito_whenUserDetailsProvided_thenReturnUserObject(){
+
+		// Act
+		boolean result = userService.createUserWithMockito(username, phone, age);
+
+		// Assert
+		assertTrue(result);
+
+	}
 }
